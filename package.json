@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/TluwaniMS/mongodb-date-filtering-methods/issues"
   },
-  "homepage": "https://github.com/TluwaniMS/mongodb-date-filtering-methods#readme"
+  "homepage": "https://github.com/TluwaniMS/mongodb-date-filtering-methods#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.3.0",
+    "mongoose": "^6.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
