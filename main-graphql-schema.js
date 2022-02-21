@@ -1,11 +1,12 @@
 const { GraphQLObjectType, GraphQLSchema } = require("graphql");
 const { createToDoMutation } = require("./graphql-mutations/ToDoMutation");
-const { getAllToDosQuery } = require("./graphql-queries/ToDoQuery");
+const { getAllToDosQuery, getToDoByMonthQuery } = require("./graphql-queries/ToDoQuery");
 
 const Query = new GraphQLObjectType({
   name: "RootQuery",
   fields: {
-    getAllToDos: getAllToDosQuery
+    getAllToDos: getAllToDosQuery,
+    getToDoByMonth: getToDoByMonthQuery
   }
 });
 

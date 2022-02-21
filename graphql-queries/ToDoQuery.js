@@ -1,5 +1,5 @@
-const { GraphQLList } = require("graphql");
-const { findAllToDos } = require("../database-queries/ToDoDBQueries");
+const { GraphQLList, GraphQLNonNull, GraphQLInt } = require("graphql");
+const { findAllToDos, getToDoByMonth } = require("../database-queries/ToDoDBQueries");
 const { ToDoModel } = require("../graphql-models/ToDoGQLModel");
 
 const getAllToDosQuery = {
@@ -9,4 +9,14 @@ const getAllToDosQuery = {
   }
 };
 
-module.exports = { getAllToDosQuery };
+const getToDoByMonthQuery = {
+  type: ToDoModel,
+  args: {
+    month: { type: new GraphQLNonNull(GraphQLInt) }
+  },
+  resolve(parent, args) {
+    return getToDoByMonth(args.month);
+  }
+};
+
+module.exports = { getAllToDosQuery, getToDoByMonthQuery };

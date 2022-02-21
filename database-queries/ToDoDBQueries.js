@@ -12,4 +12,10 @@ const createToDo = async (title, description) => {
   return `Operation completed successfully.`;
 };
 
-module.exports = { findAllToDos, createToDo };
+const getToDoByMonth = async (month) => {
+  const toDo = await ToDoModel.findOne({ $where:function (month) { console.log(this.date)} });
+
+  return toDo;
+};
+
+module.exports = { findAllToDos, createToDo, getToDoByMonth };
