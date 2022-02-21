@@ -7,3 +7,5 @@ const ToDoSchema = new Schema({
 });
 
 const ToDoModel = model("ToDo", ToDoSchema);
+
+module.exports = { ToDoModel };
