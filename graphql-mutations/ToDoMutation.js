@@ -1,7 +1,7 @@
 const { GraphQLString, GraphQLNonNull } = require("graphql");
 const { createToDo } = require("../database-queries/ToDoDBQueries");
 
-const ToDoMutation = {
+const createToDoMutation = {
   type: GraphQLString,
   args: {
     title: { type: new GraphQLNonNull(GraphQLString) },
@@ -12,4 +12,4 @@ const ToDoMutation = {
   }
 };
 
-module.exports = { ToDoMutation };
+module.exports = { createToDoMutation };
