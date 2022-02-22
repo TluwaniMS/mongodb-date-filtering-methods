@@ -20,4 +20,17 @@ const getToDoByMonth = async (month, year) => {
   return toDo;
 };
 
-module.exports = { findAllToDos, createToDo, getToDoByMonth };
+const getToDoDatesByYearAndMonth = async () => {
+  const toDos = await ToDoModel.aggregate([
+    {
+      $project: {
+        month: { $month: `$date` },
+        year: { $year: `$date` }
+      }
+    }
+  ]);
+
+  return toDos;
+};
+
+module.exports = { findAllToDos, createToDo, getToDoByMonth, getToDoDatesByYearAndMonth };
