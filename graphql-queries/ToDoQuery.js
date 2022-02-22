@@ -1,6 +1,7 @@
 const { GraphQLList, GraphQLNonNull, GraphQLInt } = require("graphql");
-const { findAllToDos, getToDoByMonth } = require("../database-queries/ToDoDBQueries");
+const { findAllToDos, getToDoByMonth, getToDoDatesByYearAndMonth } = require("../database-queries/ToDoDBQueries");
 const { ToDoModel } = require("../graphql-models/ToDoGQLModel");
+const { ConsoldatedDatesModel } = require("../graphql-models/ConsolidatedDatesGQLModel");
 
 const getAllToDosQuery = {
   type: new GraphQLList(ToDoModel),
@@ -20,4 +21,11 @@ const getToDoByMonthQuery = {
   }
 };
 
-module.exports = { getAllToDosQuery, getToDoByMonthQuery };
+const getAllToDosConsolidatedDatesQuery = {
+  type: new GraphQLList(ConsoldatedDatesModel),
+  resolve(parent, args) {
+    return getToDoDatesByYearAndMonth();
+  }
+};
+
+module.exports = { getAllToDosQuery, getToDoByMonthQuery, getAllToDosConsolidatedDatesQuery };
