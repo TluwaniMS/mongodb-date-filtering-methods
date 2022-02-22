@@ -12,8 +12,10 @@ const createToDo = async (title, description) => {
   return `Operation completed successfully.`;
 };
 
-const getToDoByMonth = async (month) => {
-  const toDo = await ToDoModel.findOne({ $where:function (month) { console.log(this.date)} });
+const getToDoByMonth = async (month, year) => {
+  const toDo = await ToDoModel.findOne({
+    $expr: { $eq: [{ $month: "$date" }, month], $eq: [{ $year: "$date" }, year] }
+  });
 
   return toDo;
 };

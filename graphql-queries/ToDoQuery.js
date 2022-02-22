@@ -12,10 +12,11 @@ const getAllToDosQuery = {
 const getToDoByMonthQuery = {
   type: ToDoModel,
   args: {
-    month: { type: new GraphQLNonNull(GraphQLInt) }
+    month: { type: new GraphQLNonNull(GraphQLInt) },
+    year: { type: new GraphQLNonNull(GraphQLInt) }
   },
   resolve(parent, args) {
-    return getToDoByMonth(args.month);
+    return getToDoByMonth(args.month, args.year);
   }
 };
 
